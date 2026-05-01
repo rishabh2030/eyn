@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rishabh loves Eny</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f5ff;
+      min-height: 100vh;
+      padding: 1.5rem 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: clamp(20px, 5vw, 28px);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: clamp(12px, 3vw, 14px);
+      color: #999;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+      gap: 14px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* On small phones, 2 columns */
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+    }
+
+    /* On very small phones, 1 column */
+    @media (max-width: 320px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card-wrapper {
+      perspective: 1000px;
+      height: 220px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      .card-wrapper {
+        height: 200px;
+      }
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-wrapper.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 16px;
+      padding: 1.1rem;
+      border: 1px solid #ede8f5;
+      background: #ffffff;
+      overflow: hidden;
+    }
+
+    .back {
+      transform: rotateY(180deg);
+    }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 480px) {
+      .icon-circle {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+    }
+
+    .card-label {
+      font-size: clamp(10px, 2vw, 11px);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: clamp(13px, 3vw, 15px);
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: clamp(11px, 2.5vw, 13px);
+      color: #777;
+      line-height: 1.5;
+    }
+
+    .flip-hint {
+      font-size: clamp(10px, 2vw, 11px);
+      color: #bbb;
+      margin-top: 8px;
+    }
+
+    .heart-line {
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .back-label {
+      font-size: clamp(10px, 2vw, 11px);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .back-text {
+      font-size: clamp(11px, 2.5vw, 13px);
+      color: #333;
+      line-height: 1.55;
+      margin-bottom: 7px;
+    }
+
+    .back-quote {
+      font-size: clamp(10px, 2vw, 12px);
+      color: #999;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* Touch ripple feedback */
+    .card-wrapper:active .card-inner {
+      filter: brightness(0.97);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 13px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rishabh 💜 Eny</h1>
+  <p class="subtitle">Tap any card to reveal a love note</p>
+
+  <div class="grid">
+
+    <!-- Card 1 -->
+    <div class="card-wrapper" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="front">
+          <div class="icon-circle" style="background:#FBEAF0">💜</div>
+          <div class="card-label" style="color:#993556">How it started</div>
+          <p class="card-title">The first feeling</p>
+          <p class="card-desc">The moment Rishabh saw Eny, something shifted forever.</p>
+          <p class="flip-hint">Tap to read more →</p>
+        </div>
+        <div class="back">
+          <div class="heart-line">💜</div>
+          <div class="back-label" style="color:#993556">How it started</div>
+          <p class="back-text">Before Rishabh even knew her name, Eny had already taken up permanent residence in his heart.</p>
+          <p class="back-quote">"Some people walk into your life and you just know — this one's different."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card-wrapper" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="front">
+          <div class="icon-circle" style="background:#EEEDFE">🌙</div>
+          <div class="card-label" style="color:#534AB7">Every night</div>
+          <p class="card-title">Last thought</p>
+          <p class="card-desc">No matter how long the day, Eny is the last thought before sleep.</p>
+          <p class="flip-hint">Tap to read more →</p>
+        </div>
+        <div class="back">
+          <div class="heart-line">🌙</div>
+          <div class="back-label" style="color:#534AB7">Every night</div>
+          <p class="back-text">Rishabh ends every single day thinking about Eny's smile, her voice, her laugh — that's when the day feels complete.</p>
+          <p class="back-quote">"The stars remind me of you — bright, beautiful, and always there."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card-wrapper" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="front">
+          <div class="icon-circle" style="background:#E1F5EE">🌸</div>
+          <div class="card-label" style="color:#0F6E56">What she means</div>
+          <p class="card-title">My whole world</p>
+          <p class="card-desc">Eny isn't just someone Rishabh loves — she is his reason.</p>
+          <p class="flip-hint">Tap to read more →</p>
+        </div>
+        <div class="back">
+          <div class="heart-line">🌸</div>
+          <div class="back-label" style="color:#0F6E56">What she means</div>
+          <p class="back-text">When Rishabh thinks of happiness, of home — it all has Eny's face. She makes the ordinary feel extraordinary just by being in it.</p>
+          <p class="back-quote">"You didn't just change my world. You became it."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card-wrapper" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="front">
+          <div class="icon-circle" style="background:#FAECE7">🔥</div>
+          <div class="card-label" style="color:#993C1D">The jealousy</div>
+          <p class="card-title">Can't share her</p>
+          <p class="card-desc">When Eny talks to other men, Rishabh's heart quietly protests.</p>
+          <p class="flip-hint">Tap to read more →</p>
+        </div>
+        <div class="back">
+          <div class="heart-line">🔥</div>
+          <div class="back-label" style="color:#993C1D">The jealousy</div>
+          <p class="back-text">It's not mistrust — it's love so deep that even a moment of Eny's attention going elsewhere feels like the sun dimming.</p>
+          <p class="back-quote">"I don't want to control you — I just never want to lose you."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card-wrapper" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="front">
+          <div class="icon-circle" style="background:#FAEEDA">✨</div>
+          <div class="card-label" style="color:#854F0B">The promise</div>
+          <p class="card-title">Always & forever</p>
+          <p class="card-desc">Rishabh's love for Eny doesn't have an expiry date.</p>
+          <p class="flip-hint">Tap to read more →</p>
+        </div>
+        <div class="back">
+          <div class="heart-line">✨</div>
+          <div class="back-label" style="color:#854F0B">The promise</div>
+          <p class="back-text">Through every mood, every silence, every argument and every laugh — Rishabh chooses Eny. Every day. Without hesitation. Without condition.</p>
+          <p class="back-quote">"I love you today, tomorrow, and every day I haven't lived yet."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card-wrapper" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="front">
+          <div class="icon-circle" style="background:#E6F1FB">💌</div>
+          <div class="card-label" style="color:#185FA5">The message</div>
+          <p class="card-title">For Eny</p>
+          <p class="card-desc">A little note from Rishabh's heart, just for her.</p>
+          <p class="flip-hint">Tap to read more →</p>
+        </div>
+        <div class="back">
+          <div class="heart-line">💌</div>
+          <div class="back-label" style="color:#185FA5">For Eny</div>
+          <p class="back-text">Eny, you are everything Rishabh didn't know he was looking for. His calm, his chaos, his favourite person in every room.</p>
+          <p class="back-quote">"I love you, Eny. More than words, more than anything." — Rishabh</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="footer">made with 💜 by Rishabh</p>
+
+</body>
+</html>
